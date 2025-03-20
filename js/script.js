@@ -2,6 +2,9 @@ const characterList = document.getElementById("character-list");
 const prevPage = document.getElementById("prev-page");
 const nextPage = document.getElementById("next-page");
 
+
+
+
 let currentPage = 1; // Variable para almacenar la página actual
 
 function cargarPagina(page) {
@@ -79,3 +82,15 @@ prevPage.addEventListener("click", () => {
 });
 
 
+const imagenes = document.querySelectorAll("img");
+
+if (imagenes.length > 0) {
+  const miImagen = imagenes[0]; // Selecciona la primera imagen (índice 0)
+  miImagen.addEventListener("click", function() {
+    
+    location.reload();
+    // ...
+  });
+} else {
+  console.log("Logo error");
+}

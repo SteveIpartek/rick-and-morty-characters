@@ -1,3 +1,16 @@
+ul#character-list {
+  background-image: url("../assets/img/images.jpg") !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  }
+
+
+
+
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,7 +38,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-}
+  }
 ol, ul {
 	list-style: none;
 }
@@ -78,17 +91,22 @@ ul {
 }
 
 #character-list {
- display: flex;
- flex-wrap: wrap;
- 
+  display: flex;
+  flex-wrap: wrap;
+  
 }
+
+
 
 #cajaFicha{
 
   margin-bottom: 15px;
-  background-color: rgb(241, 122, 122);
+  background-color: rgb(202, 215, 80 ,0.75);
+  border: 1px solid black;
+  border-radius: 10px;
   width: 280px;
   margin-left: 15px;
+  margin-top: 10px;
   padding: 10px;
 }
 
@@ -124,4 +142,3 @@ font-size: 30px;
 
 
   }
-
