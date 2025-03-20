@@ -1,25 +1,27 @@
-const characterList = document.getElementById("character-list");
-const prevPage = document.getElementById("prev-page");
+const characterList = document.getElementById("character-list");//Catheamos el contenedor 
+const prevPage = document.getElementById("prev-page");//Ahora los botones
 const nextPage = document.getElementById("next-page");
-
-
-
-
 let currentPage = 1; // Variable para almacenar la página actual
 
+
+//funcion principal 
 function cargarPagina(page) {
-  fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
+  fetch(`https://rickandmortyapi.com/api/character?page=${page}`)//llamar api rick y morty 
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Error fatal');
+        throw new Error('Error 404');//En caso de no cargar la pagina
       }
-      return response.json();
+      return response.json();//Al pasar por el filtro de if nos da ha entender que la api funciona asi que la recogemos
     })
     .then((data) => {
+      //La biblia 
       console.log(data);
+
       characterList.innerHTML = ''; // Limpiar la lista de personajes antes de cargar nuevos
 
-      data.results.forEach((character) => {
+      data.results.forEach((character) => { //recorre el array para mostrar la lista de personajes con sus datos correspondientes 
+        
+        //Creamos la estructura de cada una de las fichas de los personajes
         const divFicha = document.createElement("div");
         divFicha.id = 'cajaFicha';
         characterList.appendChild(divFicha);
@@ -41,30 +43,41 @@ function cargarPagina(page) {
 
         const Specie = document.createElement("p");
         const spchar = character.species;
-        Specie.innerHTML = `<span>Specie:</span> ${spchar}`;
+        Specie.innerHTML = `<strong>Specie:</strong> ${spchar}`;
         divdat.appendChild(Specie);
 
         const gender = document.createElement("p");
         const gnchar = character.gender;
-        gender.innerHTML = `<span>Gender:</span> ${gnchar}`;
+        gender.innerHTML = `<strong>Gender:</strong> ${gnchar}`;
         divdat.appendChild(gender);
 
         const status = document.createElement("p");
         const stchar = character.status;
-        status.innerHTML = `<span>Status:</span> ${stchar}`;
-        divdat.appendChild(status);
+       // Este switch valida el valor de stchar y dependiendo lo que valga la clase del circulo cambiara.
+        switch(stchar) {
+          case "Alive":
+            status.innerHTML = `<strong>Status:</strong> <span class="circuloV"></span>${stchar}`;
+            break;
+          case "Dead":
+            status.innerHTML = `<strong>Status:</strong> <span class="circuloR"></span>${stchar}`;
+            break;
+          default:
+            status.innerHTML = `<strong>Status:</strong> <span class="circulo"></span>${stchar}`;
+        }
+          divdat.appendChild(status);
 
         const origin = document.createElement("p");
         const orichar = character.origin.name;
-        origin.innerHTML = `<span>Origin Dimension:</span> ${orichar}`;
+        origin.innerHTML = `<strong>Origin Dimension:</strong> ${orichar}`;
         divdat.appendChild(origin);
       });
+      
       currentPage = page; // Actualizar la página actual
       prevPage.disabled = !data.info.prev; // Deshabilitar el botón "prev" si no hay página anterior
       nextPage.disabled = !data.info.next; // Deshabilitar el botón "next" si no hay página siguiente
     })
     .catch((error) => {
-      characterList.innerHTML = 'Error 404'; // Mostrar error en la lista
+      characterList.innerHTML = 'Error Inesperado '; // Mostrar error en la lista
     });
 }
 
@@ -82,14 +95,15 @@ prevPage.addEventListener("click", () => {
 });
 
 
-const imagenes = document.querySelectorAll("img");
+ //Vamos a crear un evento donde al clickear la img logo haga un f5
+const imagenes = document.querySelectorAll("img");//Aqui se recoge el logo de la pagina para que luego sea cliqueable
 
 if (imagenes.length > 0) {
-  const miImagen = imagenes[0]; // Selecciona la primera imagen (índice 0)
+  const miImagen = imagenes[0]; // Selecciona la primera imagen (índice 0) en este caso el logo
   miImagen.addEventListener("click", function() {
     
-    location.reload();
-    // ...
+    location.reload();//f5
+    
   });
 } else {
   console.log("Logo error");

@@ -1,3 +1,4 @@
+/* Imagen de fonde de la pagina */
 ul#character-list {
   background-image: url("../assets/img/images.jpg") !important;
   background-size: cover;
@@ -89,7 +90,7 @@ ul {
   padding-top: 100px;
   list-style: none;
 }
-
+/* lista de personajes ordenada en filas */
 #character-list {
   display: flex;
   flex-wrap: wrap;
@@ -97,7 +98,7 @@ ul {
 }
 
 
-
+/* estilo del contenedor de la ficha de personaje */
 #cajaFicha{
 
   margin-bottom: 15px;
@@ -134,11 +135,43 @@ font-size: 30px;
   
   }
 
-  span{
+  strong{
 
     font-size: 16px;
     font-weight: bold;
     text-decoration:underline;
+
+
+  }
+   /* los estilos del resultado del switch stchar*/
+  .circuloV {
+    display: inline-block;
+    width: 10px;   
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  
+  .circuloR {
+    display: inline-block;
+    width: 10px;   
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+  .circulo{
+    display: inline-block;
+    width: 10px;   /* 100px es enorme, normalmente 10px o 12px es mejor */
+    height: 10px;
+    border-radius: 50%;
+    background-color: gray;
+    margin-right: 5px;
+    vertical-align: middle;
 
 
   }
